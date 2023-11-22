@@ -1,13 +1,18 @@
 # AI Travel Guide
 
-## Running the frontend
+## Installing dependencies
 
 ```
 npm install
+```
+
+## Running frontend
+
+```
 npm run dev
 ```
 
-## Running the backend
+## Running backend
 
 ```
 node server.js
