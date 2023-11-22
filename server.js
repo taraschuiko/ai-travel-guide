@@ -1,10 +1,11 @@
 import Koa from "koa";
 import cors from "@koa/cors";
 import dotenv from "dotenv";
+import NodeCache from "node-cache";
 import OpenAI from "openai";
 
 dotenv.config()
-
+const myCache = new NodeCache();
 const openai = new OpenAI({
   // eslint-disable-next-line no-undef
   apiKey: process.env.OPENAI_API_KEY,
@@ -27,6 +28,11 @@ const getThingsToDo = (place) => {
   const capitalizedPlace = place.charAt(0).toUpperCase() + place.slice(1);
   const categoriesListString = categories.join(", ");
 
+  const cachedValue = myCache.get(capitalizedPlace);
+  if (cachedValue != undefined) {
+    return Promise.resolve(cachedValue);
+  }
+
   return openai.chat.completions
     .create({
       messages: [
@@ -46,7 +52,10 @@ const getThingsToDo = (place) => {
       response_format: { type: "json_object" },
     })
     .then((response) => {
-      return JSON.parse(response.choices[0].message.content);
+      const data = response.choices[0].message.content;
+      myCache.set(capitalizedPlace, data);
+
+      return data
     });
 };
 
