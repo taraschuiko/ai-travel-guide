@@ -1,13 +1,13 @@
-import Koa from "koa";
-import cors from "@koa/cors";
-import dotenv from "dotenv";
-import NodeCache from "node-cache";
-import OpenAI from "openai";
+/* eslint-disable no-undef */
+const Koa = require("koa");
+const cors = require("@koa/cors");
+const dotenv = require("dotenv");
+const NodeCache = require("node-cache");
+const OpenAI = require("openai");
 
 dotenv.config();
 const myCache = new NodeCache();
 const openai = new OpenAI({
-  // eslint-disable-next-line no-undef
   apiKey: process.env.OPENAI_API_KEY,
 });
 
@@ -74,4 +74,4 @@ app.use(async (ctx) => {
   }
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);
