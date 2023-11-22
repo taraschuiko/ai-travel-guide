@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@koa/cors": "^4.0.0",
     "dotenv": "^16.3.1",
+    "koa": "^2.14.2",
     "openai": "^4.19.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
