@@ -4,12 +4,11 @@ import dotenv from "dotenv";
 import NodeCache from "node-cache";
 import OpenAI from "openai";
 
-dotenv.config()
+dotenv.config();
 const myCache = new NodeCache();
 const openai = new OpenAI({
   // eslint-disable-next-line no-undef
   apiKey: process.env.OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
 });
 
 const categories = [
@@ -55,7 +54,7 @@ const getThingsToDo = (place) => {
       const data = response.choices[0].message.content;
       myCache.set(capitalizedPlace, data);
 
-      return data
+      return data;
     });
 };
 
