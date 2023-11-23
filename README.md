@@ -15,5 +15,5 @@ npm run dev
 ## Running backend
 
 ```
-node server.js
+npm run dev-api
 ```
