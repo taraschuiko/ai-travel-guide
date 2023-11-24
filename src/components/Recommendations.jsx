@@ -16,27 +16,34 @@ const getRandomLoadingMessage = (place) => {
   return messages[Math.floor(Math.random() * messages.length)];
 };
 
-const Recommendations = ({ place, isLoading, recommendations }) =>
-  isLoading ? (
-    <p className="my-10">⌛️ {getRandomLoadingMessage(place)}</p>
-  ) : (
-    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {recommendations &&
-        Object.entries(recommendations).map(([title, list]) => (
-          <div key={title} className="prose">
-            <h2 className="mt-0 mb-4 font-bold text-gray-900">
-              Things to {title}
-            </h2>
-            <ul className="list-none pl-0">
-              {list.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      <AdsComponent dataAdSlot="9413620898" />
-    </div>
-  );
+const Recommendations = ({ place, isLoading, recommendations }) => {
+  if (isLoading) {
+    return <p className="my-10">⌛️ {getRandomLoadingMessage(place)}</p>;
+  }
+
+  if (recommendations) {
+    return (
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {recommendations &&
+          Object.entries(recommendations).map(([title, list]) => (
+            <div key={title} className="prose">
+              <h2 className="mt-0 mb-4 font-bold text-gray-900">
+                Things to {title}
+              </h2>
+              <ul className="list-none pl-0">
+                {list.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        <AdsComponent dataAdSlot="9413620898" />
+      </div>
+    );
+  }
+
+  return null;
+};
 
 Recommendations.propTypes = {
   place: PropTypes.string,

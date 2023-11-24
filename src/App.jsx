@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { getThingsToDo } from "./api";
-import "./App.scss";
 import Header from "./components/Header";
 import Recommendations from "./components/Recommendations";
 
