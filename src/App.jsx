@@ -18,9 +18,11 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto py-10 px-8">
-      <Header setPlace={setPlace} handleSearch={handleSearch} />
-      <Recommendations place={place} isLoading={isLoading} recommendations={recommendations} />
+    <div className="min-h-screen bg-gradient-to-tr from-indigo-50">
+      <div className="container mx-auto py-10 px-8">
+        <Header setPlace={setPlace} handleSearch={handleSearch} />
+        <Recommendations place={place} isLoading={isLoading} recommendations={recommendations} />
+      </div>
     </div>
   );
 }
