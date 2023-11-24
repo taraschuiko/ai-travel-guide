@@ -45,7 +45,7 @@ const getThingsToDo = (place) => {
         },
         {
           role: "user",
-          content: `What are things to ${categoriesListString} in ${capitalizedPlace}.
+          content: `What are things to ${categoriesListString} specifically in ${capitalizedPlace}.
             Return a JSON object with keys: ${categoriesListString} and values as lists of strings with minimum 5 and maximum 10 items.
             Try to make the number of characters in each list as similar as possible.
             Add a corresponding emoji at the beginning of each list item and add space after the emoji.`,

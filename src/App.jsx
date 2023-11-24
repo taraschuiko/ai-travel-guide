@@ -5,10 +5,11 @@ import Header from "./components/Header";
 import Recommendations from "./components/Recommendations";
 
 function App() {
-  const [recommendations, setRecommendations] = useState(null);
+  const [place, setPlace] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [recommendations, setRecommendations] = useState(null);
 
-  const handleSearch = (place) => {
+  const handleSearch = () => {
     setIsLoading(true);
     getThingsToDo(place).then((response) => {
       setRecommendations(response);
@@ -18,8 +19,8 @@ function App() {
 
   return (
     <div className="container mx-auto py-10 px-8">
-      <Header handleSearch={handleSearch} />
-      <Recommendations isLoading={isLoading} recommendations={recommendations} />
+      <Header setPlace={setPlace} handleSearch={handleSearch} />
+      <Recommendations place={place} isLoading={isLoading} recommendations={recommendations} />
     </div>
   );
 }
