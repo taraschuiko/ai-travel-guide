@@ -4,6 +4,7 @@ const cors = require("@koa/cors");
 const dotenv = require("dotenv");
 const NodeCache = require("node-cache");
 const OpenAI = require("openai");
+// const mockedResponse = require("./mockedResponse.json");
 
 dotenv.config();
 const myCache = new NodeCache();
@@ -32,6 +33,9 @@ const getThingsToDo = (place) => {
     return Promise.resolve(cachedValue);
   }
 
+  // Mocked response for testing
+  // return Promise.resolve(mockedResponse);
+
   return openai.chat.completions
     .create({
       messages: [
@@ -42,7 +46,7 @@ const getThingsToDo = (place) => {
         {
           role: "user",
           content: `What are things to ${categoriesListString} in ${capitalizedPlace}.
-            Return a JSON object with keys: ${categoriesListString} and values as lists of strings with minimum 5 items.
+            Return a JSON object with keys: ${categoriesListString} and values as lists of strings with minimum 5 and maximum 10 items.
             Try to make the number of characters in each list as similar as possible.
             Add a corresponding emoji at the beginning of each list item and add space after the emoji.`,
         },

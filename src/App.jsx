@@ -1,53 +1,26 @@
 import { useState } from "react";
 import { getThingsToDo } from "./api";
 import "./App.scss";
+import Header from "./components/Header";
+import Recommendations from "./components/Recommendations";
 
 function App() {
-  const [thingsTo, setThingsTo] = useState(null);
-  const [place, setPlace] = useState("");
+  const [recommendations, setRecommendations] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = () => {
+  const handleSearch = (place) => {
     setIsLoading(true);
     getThingsToDo(place).then((response) => {
-      setThingsTo(response);
+      setRecommendations(response);
       setIsLoading(false);
     });
   };
 
   return (
-    <>
-      <div className="search-bar">
-        <h1>&quot;Things to&quot; in </h1>
-        <input
-          type="text"
-          value={place}
-          onChange={(e) => setPlace(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSearch();
-            }
-          }}
-        />
-      </div>
-      {isLoading ? (
-        <p>⌛️ Loading...</p>
-      ) : (
-        <div className="things-to">
-          {thingsTo &&
-            Object.entries(thingsTo).map(([title, list]) => (
-              <div key={title}>
-                <h2>{title}</h2>
-                <ul>
-                  {list.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-        </div>
-      )}
-    </>
+    <div className="container mx-auto py-10 px-8">
+      <Header handleSearch={handleSearch} />
+      <Recommendations isLoading={isLoading} recommendations={recommendations} />
+    </div>
   );
 }
 
