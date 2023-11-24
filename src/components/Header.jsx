@@ -10,6 +10,7 @@ const Header = ({ place, setPlace, handleSearch }) => (
     <div className="flex">
       <input
         type="text"
+        placeholder="I'm going to..."
         value={place}
         onChange={(e) => setPlace(e.target.value)}
         onKeyDown={(e) => {
