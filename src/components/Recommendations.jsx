@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import AdsComponent from "./AdsComponent";
 
 const getRandomLoadingMessage = (place) => {
   const capitalizedPlace = place.charAt(0).toUpperCase() + place.slice(1);
@@ -33,6 +34,7 @@ const Recommendations = ({ place, isLoading, recommendations }) =>
             </ul>
           </div>
         ))}
+      <AdsComponent dataAdSlot="9413620898" />
     </div>
   );
 
