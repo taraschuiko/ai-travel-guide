@@ -5,6 +5,7 @@ const AdsComponent = ({ dataAdSlot }) => {
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // eslint-disable-next-line no-empty
     } catch (e) {}
   }, []);
 
