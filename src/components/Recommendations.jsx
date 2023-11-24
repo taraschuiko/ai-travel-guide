@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import AdsComponent from "./AdsComponent";
+// import AdsComponent from "./AdsComponent";
 
 const getRandomLoadingMessage = (place) => {
   const capitalizedPlace = place.charAt(0).toUpperCase() + place.slice(1);
@@ -18,7 +18,7 @@ const getRandomLoadingMessage = (place) => {
 
 const Recommendations = ({ place, isLoading, recommendations }) => {
   if (isLoading) {
-    return <p className="my-10">⌛️ {getRandomLoadingMessage(place)}</p>;
+    return <p className="mt-10">⌛️ {getRandomLoadingMessage(place)}</p>;
   }
 
   if (recommendations) {
@@ -37,7 +37,8 @@ const Recommendations = ({ place, isLoading, recommendations }) => {
               </ul>
             </div>
           ))}
-        <AdsComponent dataAdSlot="9413620898" />
+          {/* TODO: Add ads when approved */}
+          {/* <AdsComponent dataAdSlot="9413620898" /> */}
       </div>
     );
   }

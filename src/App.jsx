@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getThingsToDo } from "./api";
 import Header from "./components/Header";
 import Recommendations from "./components/Recommendations";
+import About from "./components/About";
 
 function App() {
   const [place, setPlace] = useState("");
@@ -20,7 +21,11 @@ function App() {
     <div className="min-h-screen bg-gradient-to-tr from-indigo-50">
       <div className="container mx-auto py-10 px-8">
         <Header setPlace={setPlace} handleSearch={handleSearch} />
-        <Recommendations place={place} isLoading={isLoading} recommendations={recommendations} />
+        {recommendations || isLoading ? (
+          <Recommendations place={place} isLoading={isLoading} recommendations={recommendations} />
+        ) : (
+          <About />
+        )}
       </div>
     </div>
   );
