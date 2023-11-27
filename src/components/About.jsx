@@ -24,7 +24,7 @@ const aboutLists = [
 ];
 
 const About = () => (
-  <div className="grid mt-10 lg:mt-36 md:px-32 gap-8 lg:grid-cols-3">
+  <div className="grid mt-10 gap-8 lg:grid-cols-3">
     {aboutLists.map(({ title, items }) => (
       <div key={title} className="prose">
         <h2 className="mt-0 mb-4 font-bold text-gray-900">{title}</h2>
